@@ -30,6 +30,7 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
+	// Melakukan Long Parameter List pada public Employee
 	public Employee(Person PersonalIdentity, Date DateJoined, boolean isForeigner, NamaGender gender) {
 		this.setIdentity(PersonalIdentity);
 		this.DateJoined = DateJoined;
