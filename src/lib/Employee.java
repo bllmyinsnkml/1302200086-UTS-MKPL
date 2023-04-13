@@ -8,7 +8,7 @@ import java.util.List;
 public class Employee {
 
 	private enum NamaGender {
-		LAKI-LAKI,
+		LAKILAKI,
 		PEREMPUAN
 	}
 
