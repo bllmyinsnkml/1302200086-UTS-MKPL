@@ -8,15 +8,11 @@ import java.util.List;
 public class Employee {
 
 	private enum NamaGender {
-		LAKI-LAKI,
+		LAKILAKI,
 		PEREMPUAN
 	}
 
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String idNumber;
-	private String address;
+	private Person PersonalIdentity;
 	
 	private Date DateJoined;
 	private int monthWorkingInYear;
@@ -34,12 +30,9 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, Date DateJoined, boolean isForeigner, NamaGender gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
+	// Melakukan Long Parameter List pada public Employee
+	public Employee(Person PersonalIdentity, Date DateJoined, boolean isForeigner, NamaGender gender) {
+		this.setIdentity(PersonalIdentity);
 		this.DateJoined = DateJoined;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
@@ -88,6 +81,10 @@ public class Employee {
 	public void addChild(String childName, String childIdNumber) {
 		childNames.add(childName);
 		childIdNumbers.add(childIdNumber);
+	}
+
+	public void setIdentity(Person PersonalIdentity){
+		this.PersonalIdentity = PersonalIdentity;
 	}
 	
 	public int getAnnualIncomeTax() {
