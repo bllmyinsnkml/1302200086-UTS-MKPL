@@ -7,19 +7,18 @@ import java.util.List;
 
 public class Employee {
 
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String idNumber;
-	private String address;
+	private enum NamaGender {
+		LAKI-LAKI,
+		PEREMPUAN
+	}
+
+	private Person PersonalIdentity;
 	
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
+	private Date DateJoined;
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
-	private boolean gender; //true = Laki-laki, false = Perempuan
+	private NamaGender gender;
 	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -31,15 +30,10 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
+	// Melakukan Long Parameter List pada public Employee
+	public Employee(Person PersonalIdentity, Date DateJoined, boolean isForeigner, NamaGender gender) {
+		this.setIdentity(PersonalIdentity);
+		this.DateJoined = DateJoined;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
 		
@@ -88,14 +82,18 @@ public class Employee {
 		childNames.add(childName);
 		childIdNumbers.add(childIdNumber);
 	}
+
+	public void setIdentity(Person PersonalIdentity){
+		this.PersonalIdentity = PersonalIdentity;
+	}
 	
 	public int getAnnualIncomeTax() {
 		
 		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == DateJoined) {
+			monthWorkingInYear = date.getMonthValue() - DateJoined;
 		}else {
 			monthWorkingInYear = 12;
 		}
