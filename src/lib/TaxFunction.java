@@ -15,7 +15,7 @@ public class TaxFunction {
 
 		int taxableIncome = (monthlySalary + otherMonthlyIncome) * numberOfMonthWorking - deductible;
 		
-		if (numberOfMonthWorking > 12) {
+		if (numberOfMonthWorking > JumlahBulan) {
 			System.err.println("More than 12 month working per year");
 		}
 		
